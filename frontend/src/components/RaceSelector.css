@@ -1,0 +1,350 @@
+/* Race Selector - Multi-Year Support */
+.race-selector {
+  position: relative;
+  margin-bottom: var(--space-md);
+}
+
+.selector-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.selector-container {
+  position: relative;
+  width: 100%;
+}
+
+.selector-button {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  text-align: left;
+  border-radius: 8px;
+}
+
+.selector-button:hover {
+  border-color: var(--border-medium);
+  background: var(--bg-tertiary);
+}
+
+.selector-button:focus {
+  outline: none;
+  border-color: var(--electric-blue);
+}
+
+.selector-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.selector-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.race-name {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+}
+
+.race-meta {
+  display: flex;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.race-location {
+  text-transform: uppercase;
+}
+
+.race-divider {
+  color: var(--text-tertiary);
+}
+
+.race-round {
+  font-variant-numeric: tabular-nums;
+}
+
+.race-year {
+  font-variant-numeric: tabular-nums;
+  color: var(--electric-blue);
+}
+
+.chevron {
+  color: var(--text-tertiary);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+.selector-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  border-radius: 8px;
+  max-height: 480px;
+  overflow: hidden;
+  z-index: 1000;
+  animation: dropdownSlide 0.15s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Year Tabs */
+.year-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding: var(--space-xs);
+  background: var(--bg-elevated);
+  border-bottom: 2px solid var(--border-medium);
+}
+
+.year-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: var(--space-xs) var(--space-sm);
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-right: none;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+}
+
+.year-tab:first-child {
+  border-radius: 6px 0 0 6px;
+}
+
+.year-tab:last-child {
+  border-radius: 0 6px 6px 0;
+  border-right: 1px solid var(--border-subtle);
+}
+
+.year-tab:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.year-tab.active {
+  background: var(--bg-tertiary);
+  color: var(--electric-blue);
+  border-color: var(--electric-blue);
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
+}
+
+.year-tab.active + .year-tab {
+  border-left-color: var(--electric-blue);
+}
+
+.year-tab svg {
+  flex-shrink: 0;
+}
+
+/* Race List */
+.race-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  text-align: left;
+  font-family: inherit;
+}
+
+.dropdown-item:hover {
+  background: var(--bg-tertiary);
+  border-left: 3px solid var(--electric-blue);
+  padding-left: calc(var(--space-md) - 2px);
+}
+
+.dropdown-item.selected {
+  background: var(--bg-tertiary);
+  border-left: 3px solid var(--electric-blue);
+  padding-left: calc(var(--space-md) - 2px);
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dropdown-race-name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+}
+
+.dropdown-race-meta {
+  display: flex;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.dropdown-divider {
+  color: var(--text-tertiary);
+}
+
+/* No Races Message */
+.no-races {
+  padding: var(--space-lg);
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Backdrop */
+.selector-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 999;
+}
+
+/* Scrollbar Styling */
+.race-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.race-list::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+.race-list::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border: 2px solid var(--bg-primary);
+  border-radius: 4px;
+}
+
+.race-list::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .selector-button {
+    padding: var(--space-sm);
+  }
+
+  .race-name {
+    font-size: 13px;
+  }
+
+  .race-meta {
+    font-size: 10px;
+  }
+
+  .year-tabs {
+    gap: 0;
+  }
+
+  .year-tab {
+    padding: 6px 8px;
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .year-tab svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .dropdown-race-name {
+    font-size: 12px;
+  }
+
+  .dropdown-race-meta {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .race-meta {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .year-tab {
+    flex-direction: column;
+    gap: 2px;
+    padding: 6px 4px;
+  }
+
+  .year-tab span {
+    font-size: 10px;
+  }
+
+  .dropdown-race-meta {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+}
