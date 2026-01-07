@@ -12,6 +12,9 @@
 
 ## 📋 Overview
 
+Note: This project was developed for learning and experimentation.
+The repository demonstrates feature engineering, modeling logic, and project structure.
+
 I built an end-to-end machine learning system that predicts Formula 1 podium finishes using XGBoost, served through a Flask API with a modern React frontend.
 
 **Key Achievement:** ±70% prediction accuracy (68%-72%) across 2022-2025 seasons (~90 races)
